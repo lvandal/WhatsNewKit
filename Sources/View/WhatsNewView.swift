@@ -46,10 +46,15 @@ public struct WhatsNewView {
 // MARK: - View
 
 extension WhatsNewView: View {
+    #if os(macOS)
+    typealias WhatsNewContainer = VStack
+    #else
+    typealias WhatsNewContainer = ZStack
+    #endif
     
     /// The content and behavior of the view.
     public var body: some View {
-        ZStack {
+        WhatsNewContainer {
             // Content ScrollView
             ScrollView(
                 .vertical,
@@ -90,7 +95,9 @@ extension WhatsNewView: View {
             #endif
             // Footer
             VStack {
+                #if os(iOS)
                 Spacer()
+                #endif
                 self.footer
                     .modifier(FooterPadding())
                     #if os(iOS)
@@ -100,6 +107,8 @@ extension WhatsNewView: View {
                             .edgesIgnoringSafeArea(.horizontal)
                             .padding(self.layout.footerVisualEffectViewPadding)
                     )
+                    #else
+                    .padding(.top)
                     #endif
             }
             .edgesIgnoringSafeArea(.bottom)

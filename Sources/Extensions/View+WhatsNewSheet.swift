@@ -149,6 +149,9 @@ private struct AutomaticWhatsNewSheetViewModifier: ViewModifier {
                 versionStore: self.whatsNewEnvironment.whatsNewVersionStore,
                 layout: self.layout ?? self.whatsNewEnvironment.defaultLayout
             )
+            #if os(macOS)
+            .frame(minWidth: 600, maxWidth: 600, minHeight: 500, maxHeight: 500)
+            #endif
         }
     }
     
