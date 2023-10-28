@@ -244,6 +244,7 @@ private extension WhatsNewView {
                     layout: self.layout
                 )
             )
+            .padding(.top, self.whatsNew.secondaryAction == nil ? 10 : 0)
             #if os(macOS)
             .keyboardShortcut(.defaultAction)
             #endif
