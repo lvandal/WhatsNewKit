@@ -167,13 +167,21 @@ private extension WhatsNewView {
                 Text(
                     whatsNewText: feature.title
                 )
+                #if os(iOS)
                 .font(.subheadline.weight(.semibold))
+                #else
+                .font(.body.weight(.semibold))
+                #endif
                 .foregroundColor(.primary)
                 .fixedSize(horizontal: false, vertical: true)
                 Text(
                     whatsNewText: feature.subtitle
                 )
+                #if os(iOS)
                 .font(.subheadline)
+                #else
+                .font(.body)
+                #endif
                 .foregroundColor(.secondary)
                 .fixedSize(horizontal: false, vertical: true)
             }
